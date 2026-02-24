@@ -5,6 +5,7 @@ import com.ecommerce.product_service.model.Category;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 public class ProductResponse {
@@ -13,15 +14,16 @@ public class ProductResponse {
     private String description;
     private String shortDescription;
     private BigDecimal price;
-    private List<String> images;
+    private Map<String, String> images;
     private List<String> colors;
     private List<String> sizes;
+    private String categorySlug;
     private Date createdAt;
     private Date updatedAt;
-    private Category category;
+//    private Category category;
     public ProductResponse() {
     }
-    public ProductResponse(int id,String name, String description, String shortDescription, BigDecimal price,  List<String> images, List<String> colors, List<String> sizes, Date createdAt, Date updatedAt, Category category) {
+    public ProductResponse(int id,String name, String description, String shortDescription, BigDecimal price,  Map<String, String> images, List<String> colors, List<String> sizes, Date createdAt, Date updatedAt, String categorySlug) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -32,7 +34,7 @@ public class ProductResponse {
         this.sizes = sizes;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
-        this.category = category;
+        this.categorySlug = categorySlug;
     }
 
     public int getId() {
@@ -60,10 +62,10 @@ public class ProductResponse {
     public void setPrice(BigDecimal price) {
         this.price = price;
     }
-    public List<String> getImages() {
+    public Map<String, String> getImages() {
         return images;
     }
-    public void setImages(List<String> images) {
+    public void setImages(Map<String, String> images) {
         this.images = images;
     }
     public List<String> getColors() {
@@ -96,11 +98,11 @@ public class ProductResponse {
     public void setShortDescription(String shortDescription) {
         this.shortDescription = shortDescription;
     }
-    public Category getCategory() {
-        return category;
+    public String getCategorySlug() {
+        return categorySlug;
     }
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategory(String categorySlug) {
+        this.categorySlug = categorySlug;
     }
     @Override
     public String toString() {

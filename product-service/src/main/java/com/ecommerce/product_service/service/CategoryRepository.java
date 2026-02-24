@@ -1,6 +1,7 @@
 package com.ecommerce.product_service.service;
 
 import com.ecommerce.product_service.model.Category;
+import com.ecommerce.product_service.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

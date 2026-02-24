@@ -4,29 +4,30 @@ import com.ecommerce.product_service.model.Category;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 public class ProductRequest {
     private String name;
     private String description;
     private BigDecimal price;
-    private Integer categoryId;
+//    private Integer categoryId;
     private String shortDescription;
-    private List<String> images;
+    private Map<String, String > images;
     private List<String> sizes;
     private List<String> colors;
-    private Category category;
+//    private Category category;
+    private String categorySlug;
     public ProductRequest(){};
-    public ProductRequest(String name, String description, String shortDescription, BigDecimal price,  Integer categoryId, List<String> images, List<String> sizes, List<String> colors, Category category) {
+    public ProductRequest(String name, String description, String shortDescription, BigDecimal price, Map<String, String> images, List<String> sizes, List<String> colors, String categorySlug) {
         this.name = name;
         this.description = description;
         this.price = price;
-        this.categoryId = categoryId;
         this.shortDescription = shortDescription;
         this.images = images;
         this.sizes = sizes;
         this.colors = colors;
-        this.category = category;
+        this.categorySlug = categorySlug;
     }
     public String getName() {
         return name;
@@ -46,22 +47,22 @@ public class ProductRequest {
     public void setPrice(BigDecimal price) {
         this.price = price;
     }
-    public Integer getCategoryId() {
-        return categoryId;
-    }
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
-    }
+//    public Integer getCategoryId() {
+//        return categoryId;
+//    }
+//    public void setCategoryId(Integer categoryId) {
+//        this.categoryId = categoryId;
+//    }
     public String getShortDescription() {
         return shortDescription;
     }
     public void setShortDescription(String shortDescription) {
         this.shortDescription = shortDescription;
     }
-    public List<String> getImages() {
+    public Map<String, String> getImages() {
         return images;
     }
-    public void setImages(List<String> images) {
+    public void setImages(Map<String, String> images) {
         this.images = images;
     }
     public List<String> getSizes() {
@@ -76,13 +77,18 @@ public class ProductRequest {
     public void setColors(List<String> colors) {
         this.colors = colors;
     }
-    public Category getCategory() {
-        return category;
+//    public Category getCategory() {
+//        return category;
+//    }
+//    public void setCategory(Category category) {
+//        this.category = category;
+//    }
+    public String getCategorySlug() {
+        return categorySlug;
     }
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategorySlug(String categorySlug) {
+        this.categorySlug = categorySlug;
     }
-
     @Override
     public String toString() {
         return "ProductRequest{" +

@@ -9,6 +9,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 //@Document :for NoSQL db
@@ -35,7 +36,7 @@ public class Product {
     @ElementCollection
     @CollectionTable(name = "product_images", joinColumns = @JoinColumn(name = "product_id"))
     @Column(name = "image_url")
-    private List<String> images;
+    private Map<String, String> images;
     @CreatedDate
     @Column(nullable = false, updatable = false)
     private Date createdDate;
@@ -43,7 +44,7 @@ public class Product {
     private Date updatedDate;
 
     public Product() {}
-    public Product(Integer id, String name, String description,String shortDescription, BigDecimal price, List<String> sizes, List<String> colors, List<String> images, Date createdDate, Date updatedDate) {
+    public Product(Integer id, String name, String description,String shortDescription, BigDecimal price, List<String> sizes, List<String> colors, Map<String, String> images, Date createdDate, Date updatedDate) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -100,10 +101,10 @@ public class Product {
     public void setColors(List<String> colors) {
         this.colors = colors;
     }
-    public List<String> getImages() {
+    public Map<String, String> getImages() {
         return images;
     }
-    public void setImages(List<String> images) {
+    public void setImages(Map<String, String > images) {
         this.images = images;
     }
     public Date getCreatedDate() {
