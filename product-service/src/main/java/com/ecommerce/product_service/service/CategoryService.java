@@ -8,6 +8,6 @@ import java.util.List;
 public interface CategoryService {
     void  createCategory(CategoryRequest categoryRequest);
     List<CategoryResponse> getAllCategories();
-//    void updateCategory(CategoryRequest categoryRequest);
-//    void deleteCategory(CategoryRequest categoryRequest);
+    CategoryResponse updateCategory(Integer id, CategoryRequest categoryRequest);
+    void deleteCategory(Integer id);
 }

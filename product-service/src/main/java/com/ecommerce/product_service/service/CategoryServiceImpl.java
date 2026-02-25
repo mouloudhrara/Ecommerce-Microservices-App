@@ -2,6 +2,7 @@ package com.ecommerce.product_service.service;
 
 import com.ecommerce.product_service.dto.CategoryRequest;
 import com.ecommerce.product_service.dto.CategoryResponse;
+import com.ecommerce.product_service.exception.ResourceNotFound;
 import com.ecommerce.product_service.model.Category;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,5 +38,24 @@ public class CategoryServiceImpl implements CategoryService {
             responses.add(categoryResponse);
         }
         return responses;
+    }
+
+    @Override
+    public CategoryResponse updateCategory(Integer id, CategoryRequest categoryRequest) {
+        Category category = categoryRepository.findById(id).orElseThrow(()-> new ResourceNotFound("Categorynot found"));
+        category.setName(categoryRequest.getName());
+        categoryRepository.save(category);
+        CategoryResponse categoryResponse = new CategoryResponse();
+        categoryResponse.setId(category.getId());
+        categoryResponse.setName(category.getName());
+        categoryResponse.setSlug(category.getSlug());
+        return categoryResponse;
+    }
+
+    @Override
+    public void deleteCategory(Integer id) {
+        Category category = categoryRepository.findById(id).orElseThrow(()-> new ResourceNotFound("Category not found"));
+        categoryRepository.delete(category);
+        log.info("Category deleted successfully", category.getId());
     }
 }
