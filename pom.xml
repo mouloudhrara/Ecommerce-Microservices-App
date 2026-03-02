@@ -19,6 +19,7 @@
         <module>common-library</module>
         <module>product-service</module>
         <module>order-service</module>
+        <module>payment-service</module>
     </modules>
 
     <properties>

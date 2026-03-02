@@ -10,6 +10,19 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - postgres_data:/data/db
+      - postgres_data:/var/lib/postgresql/data/db
+  mongo:
+    image: mongo:latest
+    container_name: mongo-order
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
 volumes:
   postgres_data:
+  mongo_data:
